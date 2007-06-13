@@ -6,12 +6,11 @@ License:	GPL
 Group:		Terminals
 URL:		http://dist.schmorp.de/rxvt-unicode
 Source:		http://dist.schmorp.de/rxvt-unicode/%{name}-%{version}.tar.bz2
+Source1:	%{name}.desktop
+BuildRequires:	desktop-file-utils
 BuildRequires:	X11-devel
-BuildRequires:	fontconfig-devel
-BuildRequires:	glib2-devel
-BuildRequires:	utempter-devel
+#BuildRequires:	utempter-devel
 BuildRequires:	perl-devel
-BuildRequires:	oxim
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -25,26 +24,40 @@ Xft fonts.
 
 %build
 ./autogen.sh
-#xport CFLAGS="%{optflags} -D_GNU_SOURCE -DUTEMPTER"
-%configure2_5x \
-	--enable-everything
-#--prefix=%{_prefix} \
-#--enable-everything \
-#--with-terminfo \
-#--libdir=%{_libdir} \
-#--enable-xpm-background \
-#--enable-menubar \
-#--enable-utmp \
-#--enable-ttygid \
-#--enable-transparency \
-#--enable-next-scroll \
-#--enable-rxvt-scroll \
-#--enable-xterm-scroll \
-#--enable-xim \
-#--enable-languages \
-#--enable-smart-resize \
-#--enable-mousewheel \
-#--enable-static=yes
+
+%configure \
+	--with-xpm \
+	--enable-unicode3 \
+	--enable-combining \
+	--enable-xft \
+	--enable-font-styles \
+	--enable-xpm-background \
+	--enable-transparency \
+	--enable-tinting \
+	--enable-fading \
+	--enable-rxvt-scroll \
+	--disable-next-scroll \
+	--disable-xterm-scroll \
+	--enable-perl \
+	--disable-plain-scroll \
+	--disable-xim \
+	--enable-backspace-key disable \
+	--enable-delete-key \
+	--enable-resources \
+	--disable-8bitctrls \
+	--enable-swapscreen \
+	--enable-iso14755 \
+	--enable-frills \
+	--enable-keepscrolling \
+	--enable-selectionscrolling \
+	--enable-mousewheel \
+	--enable-slipwheeling \
+	--enable-smart-resize \
+	--enable-text-blink \
+	--enable-pointer-blank \
+	--disable-utmp \
+	--disable-wtmp \
+	--disable-lastlog
 
 %make
 
@@ -52,20 +65,9 @@ Xft fonts.
 rm -rf %{buildroot}
 %makeinstall_std
 
-#kdir -p $RPM_BUILD_ROOT%_prefix/X11R6/bin
-#kdir -p $RPM_BUILD_ROOT%_prefix/X11R6/man/man1
-#kdir -p $RPM_BUILD_ROOT%_prefix/X11R6/man/man7
-#v $RPM_BUILD_ROOT%_bindir/* $RPM_BUILD_ROOT%_prefix/X11R6/bin/
-#v $RPM_BUILD_ROOT%_mandir/man1/* $RPM_BUILD_ROOT%_prefix/X11R6/man/man1/
-#v $RPM_BUILD_ROOT%_mandir/man7/* $RPM_BUILD_ROOT%_prefix/X11R6/man/man7/
-
-#kdir -p $RPM_BUILD_ROOT%{_menudir}
-#at << EOF > $RPM_BUILD_ROOT%{_menudir}/%name
-#package(%name):\
-#needs=x11 section="Terminals" title="Rxvt-unicode"\
-# longtitle="Rxvt clone terminal with support for Unicode"\
-# command="/usr/X11R6/bin/urxvt" icon="terminals_section.png"
-#OF
+desktop-file-install --vendor="" \
+	--add-category="X-MandrivaLinux-System-Terminals" \
+	--dir %{buildroot}%{_datadir}/applications %{SOURCE1}
 
 %post
 %update_menus
@@ -78,11 +80,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-#usr/X11R6/bin/*
-#usr/X11R6/man/man1/*
-#usr/X11R6/man/man7/*
-#_libdir/urxvt
-#%config(missingok,noreplace) /etc/rxvt/rxvt-zh.menu
-#{_menudir}/%name
-#_mandir/man3/*
-
+%{_bindir}/urxvt*
+%{_libdir}/urxvt
+%{_datadir}/applications/*desktop
+%{_mandir}/man*/*.bz2
