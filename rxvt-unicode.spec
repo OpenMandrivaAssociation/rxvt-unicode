@@ -1,6 +1,6 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
-Version:	8.2
+Version:	8.3
 Release: 	%mkrel 1
 License:	GPL
 Group:		Terminals
@@ -25,7 +25,7 @@ Xft fonts.
 %build
 ./autogen.sh
 
-%configure \
+%configure2_5x \
 	--with-xpm \
 	--enable-unicode3 \
 	--enable-combining \
@@ -41,7 +41,7 @@ Xft fonts.
 	--enable-perl \
 	--disable-plain-scroll \
 	--disable-xim \
-	--enable-backspace-key disable \
+	--enable-backspace-key \
 	--enable-delete-key \
 	--enable-resources \
 	--disable-8bitctrls \
@@ -65,15 +65,15 @@ Xft fonts.
 rm -rf %{buildroot}
 %makeinstall_std
 
-desktop-file-install --vendor="" \
-	--add-category="X-MandrivaLinux-System-Terminals" \
+desktop-file-install \
+	--add-category="TerminalEmulator" \
 	--dir %{buildroot}%{_datadir}/applications %{SOURCE1}
 
 %post
-%update_menus
+%{update_menus}
 
 %postun
-%clean_menus
+%{clean_menus}
 
 %clean
 rm -rf %{buildroot}
