@@ -83,4 +83,4 @@ rm -rf %{buildroot}
 %{_bindir}/urxvt*
 %{_libdir}/urxvt
 %{_datadir}/applications/*desktop
-%{_mandir}/man*/*.bz2
+%{_mandir}/man*/*
