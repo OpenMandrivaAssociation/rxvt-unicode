@@ -1,13 +1,12 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
-Version:	8.3
+Version:	8.4
 Release: 	%mkrel 1
-License:	GPL
+License:	GPLv2+
 Group:		Terminals
 URL:		http://dist.schmorp.de/rxvt-unicode
 Source:		http://dist.schmorp.de/rxvt-unicode/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
-BuildRequires:	desktop-file-utils
 BuildRequires:	X11-devel
 #BuildRequires:	utempter-devel
 BuildRequires:	perl-devel
@@ -65,9 +64,7 @@ Xft fonts.
 rm -rf %{buildroot}
 %makeinstall_std
 
-desktop-file-install \
-	--add-category="TerminalEmulator" \
-	--dir %{buildroot}%{_datadir}/applications %{SOURCE1}
+install -D %{SOURCE1} %{buildroot}%{_datadir}/applications/
 
 %post
 %{update_menus}
@@ -82,5 +79,5 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_bindir}/urxvt*
 %{_libdir}/urxvt
-%{_datadir}/applications/*desktop
+%{_datadir}/applications/*.desktop
 %{_mandir}/man*/*
