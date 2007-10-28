@@ -64,7 +64,7 @@ Xft fonts.
 rm -rf %{buildroot}
 %makeinstall_std
 
-install -D %{SOURCE1} %{buildroot}%{_datadir}/applications/
+install -D %{SOURCE1} %{buildroot}%{_datadir}/applications/%name.desktop
 
 %post
 %{update_menus}
