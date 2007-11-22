@@ -1,7 +1,7 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
-Version:	8.4
-Release: 	%mkrel 2
+Version:	8.5a
+Release: 	%mkrel 1
 License:	GPLv2+
 Group:		Terminals
 URL:		http://dist.schmorp.de/rxvt-unicode
