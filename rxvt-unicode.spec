@@ -10,7 +10,6 @@ Source1:	%{name}.desktop
 BuildRequires:	X11-devel
 #BuildRequires:	utempter-devel
 BuildRequires:	perl-devel
-Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Rxvt-unicode is a clone of the well known terminal emulator rxvt, modified to
