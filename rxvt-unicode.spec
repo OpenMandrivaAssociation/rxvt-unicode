@@ -1,12 +1,13 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
 Version:	9.06
-Release: 	%mkrel 2
+Release: 	%mkrel 3
 License:	GPLv2+
 Group:		Terminals
 URL:		http://dist.schmorp.de/rxvt-unicode
 Source:		http://dist.schmorp.de/rxvt-unicode/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
+Patch0:		rxvt-unicode-9.06-const.patch
 BuildRequires:	X11-devel
 BuildRequires:	perl-devel
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
@@ -19,6 +20,7 @@ Xft fonts.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 ./autogen.sh
