@@ -7,6 +7,7 @@ Group:		Terminals
 URL:		http://dist.schmorp.de/rxvt-unicode
 Source:		http://dist.schmorp.de/rxvt-unicode/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
+Patch0:		urxvt-8.2-256color.patch
 BuildRequires:	X11-devel
 # X11 locales are required to build IM support
 BuildRequires:	libx11-common
@@ -21,6 +22,7 @@ Xft fonts.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 ./autogen.sh
