@@ -1,6 +1,6 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
-Version:	9.11
+Version:	9.15
 Release: 	%mkrel 1
 License:	GPLv2+
 Group:		Terminals
@@ -15,7 +15,6 @@ BuildRequires:	libxft-devel
 BuildRequires:	libstdc++-static-devel
 BuildRequires:	libxrender-devel
 BuildRequires:	fontconfig-devel
-Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Rxvt-unicode is a clone of the well known terminal emulator rxvt, modified to
@@ -63,26 +62,11 @@ Xft fonts.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 install -D -m644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%name.desktop
 
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%endif
-
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %{_bindir}/urxvt*
 %{_libdir}/urxvt
 %{_datadir}/applications/*.desktop
