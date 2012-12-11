@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=urxvt
+Comment=a VT102 emulator for the X window system
+Exec=urxvt
+Terminal=false
+Type=Application
+Icon=terminals_section
+Categories=System;TerminalEmulator;
