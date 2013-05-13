@@ -10,10 +10,10 @@ Source1:	%{name}.desktop
 # X11 locales are required to build IM support
 BuildRequires:	libx11-common
 BuildRequires:	perl-devel
-BuildRequires:	libx11-devel
-BuildRequires:	libxft-devel
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xft)
 BuildRequires:	libstdc++-static-devel
-BuildRequires:	libxrender-devel
+BuildRequires:	pkgconfig(xrender)
 BuildRequires:	fontconfig-devel
 
 %description
