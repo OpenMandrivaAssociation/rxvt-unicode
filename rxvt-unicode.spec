@@ -1,7 +1,7 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
-Version:	9.15
-Release: 	3
+Version:	9.22
+Release: 	1
 License:	GPLv2+
 Group:		Terminals
 URL:		http://dist.schmorp.de/rxvt-unicode
@@ -16,6 +16,8 @@ BuildRequires:	libstdc++-static-devel
 BuildRequires:	pkgconfig(xrender)
 BuildRequires:	fontconfig-devel
 
+Provides:	urxvt = %{EVRD}
+
 %description
 Rxvt-unicode is a clone of the well known terminal emulator rxvt, modified to
 store text in Unicode (either UCS-2 or UCS-4) and to use locale-correct input
@@ -25,11 +27,12 @@ Xft fonts.
 %prep
 %setup -q
 find . -type f -exec chmod a+r {} \;
+sed -i 's,#! perl,#!%{_bindir}/perl,g' src/perl/*
 
 %build
 ./autogen.sh
 
-%configure2_5x \
+%configure \
 	--enable-unicode3 \
 	--enable-combining \
 	--enable-xft \
@@ -66,7 +69,7 @@ find . -type f -exec chmod a+r {} \;
 %makeinstall_std
 
 install -D -m644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%name.desktop
-
+chmod +x %{buildroot}/%{_libdir}/urxvt/perl/*
 %files
 %{_bindir}/urxvt*
 %{_libdir}/urxvt
