@@ -1,12 +1,14 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
 Version:	9.22
-Release: 	1
+Release: 	2
 License:	GPLv2+
 Group:		Terminals
 URL:		http://dist.schmorp.de/rxvt-unicode
 Source:		http://dist.schmorp.de/rxvt-unicode/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
+Patch0:         rxvt-unicode-9.21-Fix-hard-coded-wrong-path-to-xsubpp.patch
+Patch1:         rxvt-unicode-0001-Prefer-XDG_RUNTIME_DIR-over-the-HOME.patch
 # X11 locales are required to build IM support
 BuildRequires:	libx11-common
 BuildRequires:	perl-devel
@@ -26,6 +28,7 @@ Xft fonts.
 
 %prep
 %setup -q
+%apply_patches
 find . -type f -exec chmod a+r {} \;
 sed -i 's,#! perl,#!%{_bindir}/perl,g' src/perl/*
 
