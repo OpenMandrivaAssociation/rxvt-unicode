@@ -1,7 +1,7 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
 Version:	9.22
-Release: 	2
+Release: 	4
 License:	GPLv2+
 Group:		Terminals
 URL:		http://dist.schmorp.de/rxvt-unicode
@@ -32,6 +32,9 @@ Xft fonts.
 find . -type f -exec chmod a+r {} \;
 sed -i 's,#! perl,#!%{_bindir}/perl,g' src/perl/*
 
+# kill the rxvt-unicode terminfo file - #192083
+#sed -i -e "/rxvt-unicode.terminfo/d" doc/Makefile.in
+
 %build
 ./autogen.sh
 
@@ -47,6 +50,7 @@ sed -i 's,#! perl,#!%{_bindir}/perl,g' src/perl/*
 	--disable-xterm-scroll \
 	--enable-perl \
 	--enable-xim \
+	--enable-pixbuf \
 	--enable-backspace-key \
 	--enable-delete-key \
 	--enable-resources \
@@ -64,6 +68,7 @@ sed -i 's,#! perl,#!%{_bindir}/perl,g' src/perl/*
 	--disable-utmp \
 	--disable-wtmp \
 	--disable-lastlog \
+	--with-terminfo=%{_datadir}/%{name} \
 	--enable-256-color
 
 %make
@@ -73,8 +78,13 @@ sed -i 's,#! perl,#!%{_bindir}/perl,g' src/perl/*
 
 install -D -m644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%name.desktop
 chmod +x %{buildroot}/%{_libdir}/urxvt/perl/*
+# install terminfo for 256color
+mkdir -p %{buildroot}%{_datadir}/terminfo/r/
+tic -e rxvt-unicode-256color -s -o %{buildroot}%{_datadir}/terminfo/ doc/etc/rxvt-unicode.terminfo
+
 %files
 %{_bindir}/urxvt*
 %{_libdir}/urxvt
 %{_datadir}/applications/*.desktop
 %{_mandir}/man*/*
+%{_datadir}/terminfo/r/rxvt-unicode-256color
