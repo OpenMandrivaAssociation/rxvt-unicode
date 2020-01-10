@@ -29,7 +29,7 @@ Xft fonts.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 find . -type f -exec chmod a+r {} \;
 sed -i 's,#! perl,#!%{_bindir}/perl,g' src/perl/*
 
