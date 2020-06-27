@@ -1,7 +1,7 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
 Version:	9.22
-Release: 	5
+Release: 	6
 License:	GPLv2+
 Group:		Terminals
 URL:		http://dist.schmorp.de/rxvt-unicode
@@ -72,10 +72,10 @@ sed -i 's,#! perl,#!%{_bindir}/perl,g' src/perl/*
 	--with-terminfo=%{_datadir}/%{name} \
 	--enable-256-color
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 install -D -m644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%name.desktop
 chmod +x %{buildroot}/%{_libdir}/urxvt/perl/*
