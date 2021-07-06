@@ -85,6 +85,7 @@ tic -e rxvt-unicode-256color -s -o %{buildroot}%{_datadir}/terminfo/ doc/etc/rxv
 
 %files
 %{_bindir}/urxvt*
+%{_bindir}/urclock
 %{_libdir}/urxvt
 %{_datadir}/applications/*.desktop
 %{_mandir}/man*/*
