@@ -1,7 +1,7 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
-Version:	9.22
-Release: 	6
+Version:	9.26
+Release: 	1
 License:	GPLv2+
 Group:		Terminals
 URL:		http://dist.schmorp.de/rxvt-unicode
@@ -85,6 +85,7 @@ tic -e rxvt-unicode-256color -s -o %{buildroot}%{_datadir}/terminfo/ doc/etc/rxv
 
 %files
 %{_bindir}/urxvt*
+%{_bindir}/urclock
 %{_libdir}/urxvt
 %{_datadir}/applications/*.desktop
 %{_mandir}/man*/*
