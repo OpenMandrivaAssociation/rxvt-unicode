@@ -1,6 +1,6 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
-Version:	9.26
+Version:	9.30
 Release: 	1
 License:	GPLv2+
 Group:		Terminals
