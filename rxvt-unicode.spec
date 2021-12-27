@@ -1,6 +1,6 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
-Version:	9.26
+Version:	9.30
 Release: 	1
 License:	GPLv2+
 Group:		Terminals
@@ -15,6 +15,7 @@ BuildRequires:	perl-devel
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xft)
 BuildRequires:	libstdc++-static-devel
+BuildRequires:	pkgconfig(libptytty)
 BuildRequires:	pkgconfig(xrender)
 BuildRequires:	fontconfig-devel
 BuildRequires:	perl-ExtUtils-Embed
