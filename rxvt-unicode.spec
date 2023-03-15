@@ -17,6 +17,7 @@ BuildRequires:	pkgconfig(xft)
 BuildRequires:	libstdc++-static-devel
 BuildRequires:	pkgconfig(libptytty)
 BuildRequires:	pkgconfig(xrender)
+BuildRequires:	pkgconfig(xext)
 BuildRequires:	fontconfig-devel
 BuildRequires:	perl-ExtUtils-Embed
 
