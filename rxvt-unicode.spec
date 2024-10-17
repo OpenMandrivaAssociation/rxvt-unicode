@@ -4,7 +4,7 @@ Version:	9.31
 Release: 	2
 License:	GPLv2+
 Group:		Terminals
-URL:		http://dist.schmorp.de/rxvt-unicode
+URL:		https://dist.schmorp.de/rxvt-unicode
 Source0:	http://dist.schmorp.de/rxvt-unicode/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 Patch0:         rxvt-unicode-9.21-Fix-hard-coded-wrong-path-to-xsubpp.patch
