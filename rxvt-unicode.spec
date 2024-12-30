@@ -20,6 +20,7 @@ BuildRequires:	pkgconfig(xrender)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	fontconfig-devel
 BuildRequires:	perl-ExtUtils-Embed
+BuildRequires:  ncurses
 
 Provides:	urxvt = %{EVRD}
 
