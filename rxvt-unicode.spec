@@ -1,11 +1,11 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
 Version:	9.31
-Release: 	2
+Release: 	3
 License:	GPLv2+
 Group:		Terminals
 URL:		https://dist.schmorp.de/rxvt-unicode
-Source0:	http://dist.schmorp.de/rxvt-unicode/%{name}-%{version}.tar.bz2
+Source0:	https://dist.schmorp.de/rxvt-unicode/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 Patch0:         rxvt-unicode-9.21-Fix-hard-coded-wrong-path-to-xsubpp.patch
 Patch1:         rxvt-unicode-0001-Prefer-XDG_RUNTIME_DIR-over-the-HOME.patch
