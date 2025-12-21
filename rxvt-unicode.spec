@@ -10,6 +10,11 @@ Source1:	%{name}.desktop
 Patch0:         rxvt-unicode-9.21-Fix-hard-coded-wrong-path-to-xsubpp.patch
 Patch1:         rxvt-unicode-0001-Prefer-XDG_RUNTIME_DIR-over-the-HOME.patch
 # X11 locales are required to build IM support
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libx11-common
 BuildRequires:	perl-devel
 BuildRequires:	pkgconfig(x11)
