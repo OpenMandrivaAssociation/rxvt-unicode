@@ -1,7 +1,7 @@
 Summary:	A color VT102 terminal emulator for the X Window System
 Name:		rxvt-unicode
-Version:	9.31
-Release:	7
+Version:	9.32
+Release:	1
 License:	GPLv2+
 Group:		Terminals
 URL:		https://dist.schmorp.de/rxvt-unicode
@@ -36,8 +36,8 @@ and output. It also supports mixing multiple fonts at the same time, including
 Xft fonts.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
+
 find . -type f -exec chmod a+r {} \;
 sed -i 's,#! perl,#!%{_bindir}/perl,g' src/perl/*
 
